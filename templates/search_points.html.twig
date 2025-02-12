@@ -7,5 +7,14 @@
 <body>
 <h1>Search points</h1>
 {{ form(form) }}
+<br>
+<br>
+{% if results %}
+    <h2>Results</h2>
+    Liczba punktów: {{ results.count }}<br><br>
+    {% for point in results.pointItems %}
+        Punkt {{ loop.index }}: {{ point.name }} {{ point.address.line1 }} {{ point.address.line2 }}<br>
+    {% endfor %}
+{% endif %}
 </body>
 </html>
