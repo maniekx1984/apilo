@@ -15,7 +15,7 @@ class SearchPointsModel
         "(this.getZip() and this.getStreet()) or !this.getStreet()",
         message: 'If street is entered you must enter a valid zip code',
     )]
-    private ?string $street;
+    private ?string $street = null;
 
     #[Assert\Length(
         min: 3,
@@ -28,9 +28,9 @@ class SearchPointsModel
 
     #[Assert\Regex(
         pattern: '/^(\d{2}-\d{3})?$/',
-        message: 'Zip must be in XX-XXX format',
+        message: 'Zip must be in 00-000 format',
     )]
-    private ?string $zip;
+    private ?string $zip = null;
 
     public function getStreet(): ?string
     {

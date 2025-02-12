@@ -18,7 +18,7 @@ class SearchPointsController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            // TODO
+            dd($form->getData());
         }
 
         return $this->render('search_points.html.twig', [
