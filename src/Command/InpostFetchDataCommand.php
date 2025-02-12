@@ -45,8 +45,15 @@ class InpostFetchDataCommand extends Command
         $scope = $input->getArgument('scope');
         $city = $input->getArgument('city');
 
-        $data = $this->fetchDataService->fetchData($scope, $city);
-        $io->note($this->serializer->serialize($data, 'json'));
-        return Command::SUCCESS;
+        try {
+            $data = $this->fetchDataService->fetchData($scope, $city);
+            $io->note($this->serializer->serialize($data, 'json'));
+
+            return Command::SUCCESS;
+        } catch (\DomainException|\Exception $exception) {
+            $io->error($exception->getMessage());
+
+            return Command::FAILURE;
+        }
     }
 }

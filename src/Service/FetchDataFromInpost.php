@@ -22,7 +22,6 @@ readonly class FetchDataFromInpost {
             'GET',
             sprintf('https://api-shipx-pl.easypack24.net/v1/%s?city=%s', $scope, $city),
         );
-
         if (200 !== $response->getStatusCode()) {
             throw new InpostApiException(
                 sprintf('Error fetching data from inpost - status code: %s', $response->getStatusCode()),
@@ -33,6 +32,7 @@ readonly class FetchDataFromInpost {
                 sprintf('Error fetching data from inpost - content type: %s', $response->getHeaders()['content-type'][0]),
             );
         }
+
         return $this->serializer->deserialize($response->getContent(), Point::class, 'json');
     }
 }
