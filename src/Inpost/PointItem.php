@@ -5,7 +5,7 @@ class PointItem {
 
     private string $name;
 
-    private array $addresses;
+    private PointItemAddress $address;
 
     public function getName(): string
     {
@@ -17,13 +17,13 @@ class PointItem {
         $this->name = $name;
     }
 
-    public function getAddresses(): array
+    public function getAddress(): PointItemAddress
     {
-        return $this->array;
+        return $this->address;
     }
 
-    public function setAddresses(array $addresses): void
+    public function setAddress(PointItemAddress $address): void
     {
-        $this->addresses = $addresses;
+        $this->address = $address;
     }
 }

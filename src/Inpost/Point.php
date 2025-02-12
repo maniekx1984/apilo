@@ -1,14 +1,21 @@
 <?php
 namespace App\Inpost;
 
+use Symfony\Component\Serializer\Attribute\SerializedName;
+
 class Point
 {
     private int $count;
 
     private int $page;
 
+    #[SerializedName('total_pages')]
     private int $totalPages;
 
+    /**
+     * @param PointItem[] $pointItems
+     */
+    #[SerializedName('items')]
     private array $pointItems;
 
     public function getCount(): int
@@ -46,6 +53,9 @@ class Point
         return $this->pointItems;
     }
 
+    /**
+     * @param PointItem[] $pointItems
+     */
     public function setPointItems(array $pointItems): void
     {
         $this->pointItems = $pointItems;
